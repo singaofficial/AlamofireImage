@@ -174,7 +174,9 @@ public final class ImageResponseSerializer: ResponseSerializer {
 
 extension DataRequest {
     public class var imageScale: CGFloat {
-        #if os(iOS) || os(tvOS)
+        #if os(visionOS)
+        return 1.0
+        #elseif os(iOS) || os(tvOS)
         return UIScreen.main.scale
         #elseif os(watchOS)
         return WKInterfaceDevice.current().screenScale
